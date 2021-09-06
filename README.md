@@ -65,3 +65,7 @@ func test_floatingPointFixed() {
 
 ## Choose the Right Assertion
 <img src="assets/assertions.png" width="50%" />
+
+-------------------
+
+# Manage Your Test Life Cycles
