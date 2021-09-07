@@ -111,3 +111,23 @@ test_methodTwo(). And it assembles these instances into a test suite before runn
 > When Is XCTestCase a Test Case?
 >
 > Why does XCTestCase look like a test suite, when it has a name that says it’s a test case? The difference is between when we’re writing test code and when XCTest is running them. We can put several test methods inside an XCTestCase subclass. From our point of view of writing or reading test code, MyClassTests is a test suite. But it’s more accurate to say it will become a test suite. When XCTest runs, it creates a separate instance for each test method. So each instance of MyClassTests is a single test case, from XCTest’s point of view.
+
+- **Use setUp() and tearDown()**
+- Having looked at the wrong way to tackle test code duplication, what’s the right way? XCTestCase provides special methods for us to use. First, let’s set a term for “stuff the test needs in order to run.” The term we’re looking for is test fixture. Since our two tests use the same test fixture, we want to move it outside the tests. But simply promoting sut to a property didn’t work. So what do we do? XCTestCase defines two methods, setUp() and tearDown(). They’re designed to be overridden in subclasses. Combined with careful use of optionals.
+
+- Run the tests and examine the log. You’ll see that XCTest created and destroyed the MyClass instances within each test run. Hurray! For Swift in particular, the trick is to declare the objects in our shared test fixture using var instead of let. We also add the ! to make these variables implicitly unwrapped optionals:
+
+```swift
+private var sut: MyClass!
+```
+- This may cause you some initial discomfort. Experienced Swift programmers call ! the “crash operator,” and do their best to avoid it. But the implicitly unwrapped optional is a necessity here, just as it is for an IBOutlet. XCTest is a framework, meaning it calls back to our code. setUp() and tearDown() are template methods as defined by Design Patterns: Elements of Reusable Object-Oriented Software [GHJV95]. The test runner in XCTest guarantees the following sequence for each test case:
+1. Call setUp().
+2. Call the test method.
+3. Call tearDown().
+- So rest easy. As long as you create what you need inside setUp(), the implicitly unwrapped optionals won’t crash. And without them, we’re creating a context of unpredictable chaos for our tests. Type the exclamation point. It’s the right thing for XCTestCase properties. Note that setUp() alone isn’t enough. XCTest creates test instances, but it never destroys them. Their properties will live on, so we need tearDown() to clean up any remains of our shared test fixtures.
+
+>**Don’t Abuse setUp()**
+>
+>Whenever we programmers learn a new trick, we have a tendency to overuse it. Be careful not to overuse setUp(). It can become a dumping ground for things used by only some of the test cases. This in turn makes it hard to reason about the tests when we read them. Try to limit setUp() to things that matter to most tests in a suite.
+----------------------
+## Measure Code Coverage and Add Tests

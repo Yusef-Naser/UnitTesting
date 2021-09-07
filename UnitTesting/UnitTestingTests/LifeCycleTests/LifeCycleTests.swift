@@ -10,16 +10,22 @@ import XCTest
 
 class LifeCycleTests: XCTestCase {
 
-    func test_methodOne() {
-        let sut = LifeCycle()
-        sut.methodOne()
-        XCTFail("faild, yo")
+    private var sut: LifeCycle!
+    override func setUp() {
+        super.setUp()
+        sut = LifeCycle()
     }
-    
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+    func test_methodOne() {
+        sut.methodOne()
+    // Normally, assert something
+    }
     func test_methodTwo() {
-        let sut = LifeCycle()
         sut.methodTwo()
-        // Normally, assert something
+    // Normally, assert something
     }
 
 }
