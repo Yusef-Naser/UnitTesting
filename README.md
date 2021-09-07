@@ -94,7 +94,7 @@ func test_floatingPointFixed() {
 ### Timely
 - Practically, You can write unit tests at any time. You can wait up to code is production-ready or you’re better off focusing on writing unit tests in a timely fashion. As a suggestion, you should have guidelines or strict rules around unit testing. You can use review processes or even automated tools to reject code without sufficient tests. The more you unit-test, the more you’ll find that it pays to write smaller chunks of code before tackling a corresponding unit test. First, it’ll be easier to write the test, and second, the test will pay off immediately as you flesh out the rest of the behaviors in the surrounding code.
 
-- **Learn How XCTest Manages Test Cases**
+## **Learn How XCTest Manages Test Cases**
 - By applying the wrong way to reduce duplication, we’ve stumbled onto a mystery. Why are objects piling up before we run a single test? To solve this mystery, we’re going to dig into how XCTest creates and runs test cases. It’s easy to assume that when XCTest runs a test case, three things happen:
 1. It creates an instance of the XCTestCase subclass.
 2. It runs the specific test method.
