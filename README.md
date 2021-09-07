@@ -68,7 +68,7 @@ func test_floatingPointFixed() {
 
 -------------------
 
-# Manage Your Test Life Cycles
+# Manage Your Test Life Cycles (Folder `LifeCycle` in project)
 
 ## Observe Object Life Cycles to Learn the Phases of a Test
 ## FIRST Principles of Good Unit Tests
