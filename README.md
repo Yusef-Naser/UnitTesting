@@ -94,5 +94,20 @@ func test_floatingPointFixed() {
 ### Timely
 - Practically, You can write unit tests at any time. You can wait up to code is production-ready or you’re better off focusing on writing unit tests in a timely fashion. As a suggestion, you should have guidelines or strict rules around unit testing. You can use review processes or even automated tools to reject code without sufficient tests. The more you unit-test, the more you’ll find that it pays to write smaller chunks of code before tackling a corresponding unit test. First, it’ll be easier to write the test, and second, the test will pay off immediately as you flesh out the rest of the behaviors in the surrounding code.
 
------------------
+- **Learn How XCTest Manages Test Cases**
+- By applying the wrong way to reduce duplication, we’ve stumbled onto a mystery. Why are objects piling up before we run a single test? To solve this mystery, we’re going to dig into how XCTest creates and runs test cases. It’s easy to assume that when XCTest runs a test case, three things happen:
+1. It creates an instance of the XCTestCase subclass.
+2. It runs the specific test method.
+3. It destroys the XCTestCase instance.
+- Or, you may have assumed that XCTest creates one instance to run all the tests in a suite. But both are incorrect. Here’s what really happens:
+1. XCTest searches for all classes that inherit from XCTestCase.
+2. For each such class, it finds every test method. These are methods whose names start with test, take no arguments, and have no return value.
+3. For each such test method, it creates an instance of the class. Using Objective-C runtime magic, it remembers which test method that instance will run.
+4. XCTest collects the instances of the subclass into a test suite.
+5. When it’s finished creating all test cases, only then does XCTest begin running them. What this means for our example is that XCTest finds MyClassTests. It searches for method names starting with “test,” and it finds two. So it creates two
+- instances of MyClassTests: one instance to run test_methodOne(), another to run
+test_methodTwo(). And it assembles these instances into a test suite before running any tests. Since each instance has a MyClass property, we’ve accidentally created two instances of MyClass.
 
+> When Is XCTestCase a Test Case?
+>
+> Why does XCTestCase look like a test suite, when it has a name that says it’s a test case? The difference is between when we’re writing test code and when XCTest is running them. We can put several test methods inside an XCTestCase subclass. From our point of view of writing or reading test code, MyClassTests is a test suite. But it’s more accurate to say it will become a test suite. When XCTest runs, it creates a separate instance for each test method. So each instance of MyClassTests is a single test case, from XCTest’s point of view.
