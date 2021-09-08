@@ -149,3 +149,25 @@ private var sut: MyClass!
 >But as soon as you need to change a section of code, write tests for that section before making any changes.
 
 > **Don’t fret trying to cover code you know to be unreachable.**
+> **Try to cover every side of a conditional. Remember that an if without an else still requires two tests, checking the behavior when the statements are not executed.**
+
+>What If There Are Too Many Paths?
+>
+>We should try to have one test for each independent path through a function. But in legacy code, the number of paths (and as a result, the number of tests) can explode. One way to tame this explosion is to extract a nested conditional into its own method. So if you have an if inside another if, select the inner clause. Then in the Xcode menu, select Editor ▶ Refactor ▶ Extract to Method. Remove the fileprivate declaration from the new function so that tests can access it. Now you can write tests to cover the new function on its own. Another way to tame the explosion is to look for combinations that shouldn’t exist. We can often eliminate impossible states by using enumeration cases with associated values. To explore this further, see Mislav Javor’s “Swift Enums Are ‘Sum’ Types. That Makes Them Very Interesting.”a Code analysis tools that measure cyclomatic complexity can help you identify functions that need too many tests.
+
+## Cover a Loop
+- It’s tempting to cover a loop with a single test that loops several times. But this misses an important boundary condition. What if the loop is never entered? We want to see what happens if the statements inside are skipped.
+
+>To cover an arbitrary loop, use zero times through and a few times through—say, two or three times.
+
+## Cover Statements in a Sequence
+- The statements in sequence we’ll focus on are the didSet observer on the width property. Let’s test the outcome of the first line, which calculates the area from a given width.
+
+## Avoid Percentage Targets, Embrace Forward Movement
+- Adding tests to a legacy project is a long endeavor. Let’s take a step back from code examples and look at practices to avoid—and practices to embrace.
+- Avoid setting percentage targets for code coverage. Goodhart’s Law expresses the problem with such targets:1
+- When a measure becomes a target, it ceases to be a good measure. As you’ve seen, it’s easy to raise the numbers without having meaningful tests. That’s exactly what folks will do if the team uses coverage as a target instead of as a measurement of trends.
+- Another thing to avoid: don’t write tests that set and get stored properties. Such tests don’t say anything about the code—they only show that the compiler works. Those properties are there for a reason. Find the reason, and test the reason instead.
+- (But computed properties are just functions without arguments. Do test those.) Rather than setting a percentage target, your team might try this goal: move the needle forward. Any forward progress is significant and worth celebrating.
+- Measure your total code coverage on a regular cadence—maybe every two weeks or every month. It’s helpful to capture more than the percentage alone. Use a tool like cloc2 to count lines of code. Then apply the percentage to calculate how many lines of code are covered and how many aren’t. For example, if something with 5,000 lines has 20 percent line coverage, then 4,000 lines of code are definitely not covered. This will give you a clearer picture of totals, not just percentages.
+- Observe the code coverage gutter every time you add a test. It may be a long road, but the positive feedback of seeing the red blocks disappear will boost your motivation.

@@ -25,4 +25,20 @@ class CoveredClassTests: XCTestCase {
         XCTAssertEqual(result, 3)
     }
     
+//    func test_commaSeparated_from2to4_shouldReturn234SeparatedByCommas() {
+//        let result = CoveredClass.commaSeparated(from: 2, to: 4)
+//        XCTAssertEqual(result, "2,3,4")
+//    }
+    
+    func test_commaSeparated_from2to2_shouldReturnSomething() {
+        let result = CoveredClass.commaSeparated(from: 2, to: 2)
+        XCTAssertEqual(result, "2")
+    }
+    
+    func test_area_withWidth7_shouldBe49() {
+        let sut = CoveredClass()
+        sut.width = 7
+        XCTAssertEqual(sut.area, 49)
+    }
+    
 }
