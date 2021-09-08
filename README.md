@@ -171,3 +171,6 @@ private var sut: MyClass!
 - (But computed properties are just functions without arguments. Do test those.) Rather than setting a percentage target, your team might try this goal: move the needle forward. Any forward progress is significant and worth celebrating.
 - Measure your total code coverage on a regular cadence—maybe every two weeks or every month. It’s helpful to capture more than the percentage alone. Use a tool like cloc2 to count lines of code. Then apply the percentage to calculate how many lines of code are covered and how many aren’t. For example, if something with 5,000 lines has 20 percent line coverage, then 4,000 lines of code are definitely not covered. This will give you a clearer picture of totals, not just percentages.
 - Observe the code coverage gutter every time you add a test. It may be a long road, but the positive feedback of seeing the red blocks disappear will boost your motivation.
+
+---------------------
+# Take Control of Application Launch
