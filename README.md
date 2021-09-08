@@ -131,3 +131,12 @@ private var sut: MyClass!
 >Whenever we programmers learn a new trick, we have a tendency to overuse it. Be careful not to overuse setUp(). It can become a dumping ground for things used by only some of the test cases. This in turn makes it hard to reason about the tests when we read them. Try to limit setUp() to things that matter to most tests in a suite.
 ----------------------
 ## Measure Code Coverage and Add Tests
+- **Enable Code Coverage**
+1. In the Xcode menu, select Product ▶ Scheme ▶ Edit Scheme.
+2. In the scheme editor, select Test in the left column.
+3. Then from the tabs, select Options.
+4. Finally, enable the Code Coverage check box to “Gather coverage for all targets.”
+
+- **Examine Code Coverage Results**
+
+<img src="assets/Screen Shot 2021-09-08 at 4.48.06 PM.png" width="50%" />
