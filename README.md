@@ -1,5 +1,7 @@
 # iOS Unit Testing
 
+- ### **Working Effectively with Legacy Code**
+
 ## What Are Unit Tests Anyway?
 - Unit tests are a subset of automated tests where the feedback is quick, consistent, and unambiguous.
 - Quick: A single unit test should complete in milliseconds. We want thousands of such tests.
@@ -140,3 +142,10 @@ private var sut: MyClass!
 - **Examine Code Coverage Results**
 
 <img src="assets/Screen Shot 2021-09-08 at 4.48.06 PM.png" width="50%" />
+
+>Does Old Code Need Tests?
+>
+>Most code in a shipping app has been in use for some time. Do you even need to write tests for such code? No. That is, not as long as that code doesn’t change.
+>But as soon as you need to change a section of code, write tests for that section before making any changes.
+
+> **Don’t fret trying to cover code you know to be unreachable.**
