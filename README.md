@@ -222,3 +222,32 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
 ------------------
 
 # Load View Controllers
+
+- whatever viewcontroller you use call `loadViewIfNeeded()` from viewcontroller to load views before write test.
+```swift
+
+func test_loading() {
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+    let sut: StoryboardBasedViewController = sb.instantiateViewController(
+            identifier: String(describing: StoryboardBasedViewController.self))
+    
+    XCTAssertNotNil(sut.label)
+}
+```
+- This test fail becase we don't call `loadViewIfNeeded()`
+
+```swift
+
+func test_loading() {
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+    let sut: StoryboardBasedViewController = sb.instantiateViewController(
+            identifier: String(describing: StoryboardBasedViewController.self))
+    sut.loadViewIfNeeded()
+    XCTAssertNotNil(sut.label)
+}
+```
+- This test pass becase we call `loadViewIfNeeded()`
+
+---------------
+# Manage Difficult Dependencies
+
