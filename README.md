@@ -210,3 +210,11 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
 - It’s time to give the new setup a try. First, run the app to verify the message from the normal app delegate in the console log. Then run the tests to verify the message from the testing app delegate. The console log will show
 >> << Launching with testing app delegate
 - We’ve managed to avoid the regular app delegate during testing. This is important because we want the tests to be in full control of what’s going on during test execution.
+
+## Tweak Your Testing App Delegate
+- You now have control over more of the app launch sequence during testing. Remember, the goal is to set up an environment that’s suitable for tests. But your app may make assumptions about its environment, so your TestingAppDelegate may need more than the simple code in our example.
+- For testing, we want the environment to avoid doing any actual work. Depending on what your normal app delegate does, the testing app delegate may do things like the following:
+
+- - Setting up core data with an in-memory store. This will keep production data from interfering with test data and vice-versa. It will also help tests to run faster.
+- - Providing a testing-specific key for an analytics service. Unit tests shouldn’t make any actual network calls, but they’ll still happen until you change the legacy code. So at the very least, use a different key to avoid polluting the data you collect.
+- On the other hand, your app may not need anything in the testing app delegate. If all you’re left with is an application(_:didFinishLaunchingWithOptions:) method that does nothing but return true, just delete the method.
