@@ -223,7 +223,7 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
 
 # Load View Controllers
 
-- whatever viewcontroller you use call `loadViewIfNeeded()` from viewcontroller to load views before write test.
+- whatever viewcontroller (storyboard, XIB file, code-based view controllers) you use, call `loadViewIfNeeded()` from viewcontroller to load views before write test.
 ```swift
 
 func test_loading() {
