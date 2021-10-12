@@ -251,3 +251,21 @@ func test_loading() {
 ---------------
 # Manage Difficult Dependencies
 
+
+# Testing Outlet Connections
+
+# Testing Button Taps (Using Actions)
+
+# Testing UserDefaults (with Fakes)
+
+# Testing Network Requests (with Mocks)
+
+# Testing Network Responses (and Closures)
+
+# Testing Text Fields (and Delegate Methods)
+
+# Testing Table Views
+
+# Testing View Appearance (with Snapshots)
+
+

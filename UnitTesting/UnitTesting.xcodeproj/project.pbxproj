@@ -12,6 +12,8 @@
 		2C002AB826E62E2700BBDB84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C002AB626E62E2700BBDB84 /* Main.storyboard */; };
 		2C002ABA26E62E2700BBDB84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C002AB926E62E2700BBDB84 /* Assets.xcassets */; };
 		2C002ABD26E62E2700BBDB84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C002ABB26E62E2700BBDB84 /* LaunchScreen.storyboard */; };
+		2C652C56270DB2BF004D494E /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C652C55270DB2BF004D494E /* Analytics.swift */; };
+		2C652C58270DB3CE004D494E /* MySingletonAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C652C57270DB3CE004D494E /* MySingletonAnalytics.swift */; };
 		2C85E5C826E7884B00C98A40 /* LifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C85E5C726E7884B00C98A40 /* LifeCycle.swift */; };
 		2C85E5CB26E788C200C98A40 /* LifeCycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C85E5CA26E788C200C98A40 /* LifeCycleTests.swift */; };
 		2CBED2EE26EA121B00202DB7 /* AppLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBED2ED26EA121B00202DB7 /* AppLaunchTests.swift */; };
@@ -41,6 +43,8 @@
 		2C002ABE26E62E2700BBDB84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C002AC326E62E2700BBDB84 /* UnitTestingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C002AC926E62E2700BBDB84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C652C55270DB2BF004D494E /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		2C652C57270DB3CE004D494E /* MySingletonAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySingletonAnalytics.swift; sourceTree = "<group>"; };
 		2C85E5C726E7884B00C98A40 /* LifeCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycle.swift; sourceTree = "<group>"; };
 		2C85E5CA26E788C200C98A40 /* LifeCycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleTests.swift; sourceTree = "<group>"; };
 		2CBED2ED26EA121B00202DB7 /* AppLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchTests.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		2C002AAF26E62E2700BBDB84 /* UnitTesting */ = {
 			isa = PBXGroup;
 			children = (
+				2C652C54270DB283004D494E /* Manage Defficult Dependecies */,
 				2CC12F4D26E902D0007CD706 /* CoveredClass */,
 				2C85E5C626E7883E00C98A40 /* LifeCycle */,
 				2CBED2F126EA15B900202DB7 /* main.swift */,
@@ -112,6 +117,15 @@
 				2C002AC926E62E2700BBDB84 /* Info.plist */,
 			);
 			path = UnitTestingTests;
+			sourceTree = "<group>";
+		};
+		2C652C54270DB283004D494E /* Manage Defficult Dependecies */ = {
+			isa = PBXGroup;
+			children = (
+				2C652C55270DB2BF004D494E /* Analytics.swift */,
+				2C652C57270DB3CE004D494E /* MySingletonAnalytics.swift */,
+			);
+			path = "Manage Defficult Dependecies";
 			sourceTree = "<group>";
 		};
 		2C85E5C626E7883E00C98A40 /* LifeCycle */ = {
@@ -254,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C652C58270DB3CE004D494E /* MySingletonAnalytics.swift in Sources */,
 				2C002AB526E62E2700BBDB84 /* ViewController.swift in Sources */,
 				2CBED2F226EA15B900202DB7 /* main.swift in Sources */,
+				2C652C56270DB2BF004D494E /* Analytics.swift in Sources */,
 				2C002AB126E62E2700BBDB84 /* AppDelegate.swift in Sources */,
 				2C85E5C826E7884B00C98A40 /* LifeCycle.swift in Sources */,
 				2CC12F4F26E902E1007CD706 /* CoveredClass.swift in Sources */,
